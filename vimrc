@@ -97,7 +97,7 @@ Plug 'dgryski/vim-godef'
 
 
 " *****************************mark down*******************************
-Plug 'iamcco/markdown-preview.vim'
+" Plug 'iamcco/markdown-preview.vim'
 
 
 " File navigation
@@ -105,7 +105,7 @@ Plug 'iamcco/markdown-preview.vim'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'kevinhwang91/rnvimr'
 Plug 'airblade/vim-rooter'
 Plug 'pechorin/any-jump.vim'
