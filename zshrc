@@ -124,6 +124,9 @@ export https_proxy=""
 
 # alias
 alias vim=nvim
+alias gst git status
+alias ga git add .
+alias gba git branch -a
 
 
 # fzf function
@@ -143,6 +146,16 @@ _fzf_comprun() {
   esac
 }
 
+function gitlog()
+{
+  git log --oneline $* | fzf -e --multi --preview="git show {+1}"
+}
+
+function gitcheckout()
+{
+  git checkout $(git branch -a) | fzf --preview="git log --oneline {1}"
+}
+
 # environment
 
 # fzf
@@ -152,9 +165,14 @@ export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_ALT_C_COMMAND="fd -t d . "
 source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.zsh
 export FZF_COMPLETION_TRIGGER='``'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' menu yes select search
+
+
 
