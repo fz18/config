@@ -154,8 +154,14 @@ let g:go_highlight_generate_tags = 1
 let g:godef_split=2
 let g:go_doc_keywordprg_enabled = 0
 
-map <C-s> :w<CR>
+map <leader>fs :w<CR>
+map <leader>tF :Lines<CR>
+map <leader>tf :BLines<CR>
+map <leader>gc :Commits<CR>
+map <leader>cl :Commands<CR>
 map <C-q> :q<CR>
+
+map <C-p> :Files<CR>
 map R :source $MYVIMRC<CR>
 
 map sl :set splitright<CR>:vsplit<CR>
