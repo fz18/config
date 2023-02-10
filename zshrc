@@ -106,11 +106,21 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+function tes() {
+export ETCD_URI="etcd.etcd-dev:2379"
+export ETCD_USER="root"
+export ETCD_PASSWORD="33c3iT70QTABU2JR"
+}
 
+function dev() {
+export ETCD_URI="etcd.etcd-test:2379"
+export ETCD_USER="root"
+export ETCD_PASSWORD="33c3iT70QTABU2JR"
+}
 
 proxy(){
-export http_proxy="http://127.0.0.1:4780"
-export https_proxy="http://127.0.0.1:4780"
+export http_proxy="http://127.0.0.1:7890"
+export https_proxy="http://127.0.0.1:7890"
 }
 
 noproxy(){
@@ -152,6 +162,10 @@ function gitcheckout()
 # environment
 
 # fzf
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m'
+fi
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || bat {}) 2> /dev/null | head -500'"
 export FZF_DEFAULT_COMMAND='fd --type file'
@@ -167,5 +181,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*' menu yes select search
 
+export AE_GITLAB_ACCESS_TOKEN="gYwhX4VbQqxHpaY4zeXF"
+export LDAP_USERNAME="fengzhao"
+export LDAP_PASSWORD="fz1806785"
 
 

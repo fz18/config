@@ -765,6 +765,10 @@ key_bindings:
   - { key: F,         mods: Alt,                    chars: "\x1bf" }
   - { key: B,         mods: Alt,                    chars: "\x1bb" }
   - { key: V,         mods: Alt,                   action: ToggleViMode            }
+  - { key: Space,     mods: Control,                chars: "\x00"}
+  - { key: F,         mods: Control, mode: ~Vi,                chars: "\x06"}
+  - { key: B,         mods: Control, mode: ~Vi,                chars: "\x02"}
+
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
