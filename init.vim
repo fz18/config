@@ -25,11 +25,14 @@ Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 let mapleader = "\<space>"
 
-" nnoremap <silent> <C-f> :Files<CR>
+nnoremap <esc><esc> :noh<return><esc>
+
+nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>/ :Blines<CR>
 nnoremap <silent> <Leader>' :Marks<CR>
