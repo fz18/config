@@ -14,27 +14,29 @@ set relativenumber
 set hidden
 set splitright
 set splitbelow
+set termguicolors
+set updatetime=300
 colorscheme molokai
 " 背景透明
 hi Normal guibg=NONE ctermbg=NONE 
 hi diffAdded ctermfg=188 ctermbg=64 cterm=bold guifg=#50FA7B guibg=NONE gui=bold
 hi diffRemoved ctermfg=88 ctermbg=NONE cterm=NONE guifg=#FA5057 guibg=NONE gui=NONE
 hi MatchParen cterm=reverse
+hi! link CursorColumn MatchParen
+hi CursorLine guibg=Grey
 
 " 使用vim-plug管理插件
 call plug#begin()
 Plug 'vim-airline/vim-airline'
-Plug 'scrooloose/nerdtree'
-" Plug 'ctrlpvim/ctrlp.vim'
-Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+Plug 'vim-scripts/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/tagbar'
 " 用于插入代码片段
 " ultisnips是snippets的管理器
 " Plug 'SirVer/ultisnips'
@@ -95,10 +97,12 @@ let g:go_term_enabled=1
 let g:go_term_mode=":split"
 
 
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nnoremap <esc><esc> :noh<return><esc>
 
-nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <silent> <Leader>/ :BLines<CR>
 nnoremap <silent> <Leader>' :Marks<CR>
@@ -110,6 +114,5 @@ nnoremap <silent> <Leader>w :w<CR>
 nnoremap <silent> <Leader>r :GoRun<CR>
 nnoremap <silent> <Leader>e <Cmd>CocCommand explorer<CR>
 nnoremap <silent> <Leader>q :q<CR>
-map    	 <silent> <Leader>t :term<CR>
 
 
