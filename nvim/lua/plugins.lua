@@ -4,6 +4,13 @@ packer.startup({
 	  use 'wbthomason/packer.nvim'
 	  use 'tanvirtin/monokai.nvim'
 	  use({'nvim-tree/nvim-tree.lua', requires =  'nvim-tree/nvim-web-devicons' })
+	  use { "alexghergh/nvim-tmux-navigation" }
+	  -- using packer.nvim
+	  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+	  use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+	  use { 'nvim-telescope/telescope.nvim', requires =  {'nvim-lua/plenary.nvim'} }
+	  -- telescope extensions
+	  use "LinArcX/telescope-env.nvim"
   end,
   config = {
 	max_jobs = 16,

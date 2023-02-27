@@ -13,28 +13,31 @@ map("n", "q", ":q<CR>", opt)
 map("n", "qq", ":q!<CR>", opt)
 map("n", "Q", ":qa!<CR>", opt)
 map("n", "<Leader>w", ":w<CR>", opt)
-
-local pluginKeys = {}
--- nvim-tree
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", opt)
 
--- 列表快捷键
-pluginKeys.nvimTreeList = {
-  -- 打开文件夹
-  { key = {"l", "<CR>", "o"}, action = "vsplit" },
-  -- 分屏打开
-  { key = "v", action = "vsplit" },
-  { key = "s", action = "vsplit" },
-  -- 显示隐藏文件
-  { key = ".", action = "toggle_dotfiles" },
-  -- 文件操作
-  { key = "c", action = "create" },
-  { key = "d", action = "remove" },
-  { key = "r", action = "rename" },
-  { key = "x", action = "cut" },
-  { key = "y", action = "copy" },
-  { key = "p", action = "paste" },
-  { key = "so", action = "system_open" },
+-- Telescope
+map("n", "<C-p>", ":Telescope find_files<CR>", opt)
+map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+
+local pluginKeys = {}
+
+-- Telescope 列表中 插入模式快捷键
+pluginKeys.telescopeList = {
+  i = {
+    -- 上下移动
+    ["<C-j>"] = "move_selection_next",
+    ["<C-k>"] = "move_selection_previous",
+    ["<Down>"] = "move_selection_next",
+    ["<Up>"] = "move_selection_previous",
+    -- 历史记录
+    ["<C-n>"] = "cycle_history_next",
+    ["<C-p>"] = "cycle_history_prev",
+    -- 关闭窗口
+    ["<C-c>"] = "close",
+    -- 预览窗口上下滚动
+    ["<C-u>"] = "preview_scrolling_up",
+    ["<C-d>"] = "preview_scrolling_down",
+  },
 }
 
 return pluginKeys
