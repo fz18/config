@@ -1,0 +1,14 @@
+{
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".git/"],
+      "filetypes": ["go"]
+    }
+  },
+  "suggest.noselect": false,
+  "suggest.floatEnable": true,
+  "highlight.colors.enable": true,
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.diagnostic.displayByAle": true
+}

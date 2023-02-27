@@ -82,7 +82,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: SimpleFullscreen
+  startup_mode: Maximized
 
   # Window title
   #title: Alacritty
@@ -122,7 +122,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Monaco
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -133,10 +133,10 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Monaco
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    style: Bold
+    style: Regular
 
   # Italic font face
   #italic:
@@ -768,6 +768,7 @@ key_bindings:
   - { key: Space,     mods: Control,                chars: "\x00"}
   - { key: F,         mods: Control, mode: ~Vi,                chars: "\x06"}
   - { key: B,         mods: Control, mode: ~Vi,                chars: "\x02"}
+  - { key: K,         mods: Control,                chars: "\x0b"}
 
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
@@ -903,3 +904,4 @@ key_bindings:
 
   # Highlight window damage information.
   #highlight_damage: false
+  #xxx
