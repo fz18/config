@@ -11,6 +11,16 @@ packer.startup({
 	  use { 'nvim-telescope/telescope.nvim', requires =  {'nvim-lua/plenary.nvim'} }
 	  -- telescope extensions
 	  use "LinArcX/telescope-env.nvim"
+	  -- treesitter
+	  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	  -- 可以移除掉背景色，让 vim 透明
+	  use 'xiyaowong/nvim-transparent' 
+	  --------------LSP ----------------------
+	  -- Lspconfig
+	  use({ "neovim/nvim-lspconfig" })
+	  -- LS installer
+	  use({ "williamboman/mason.nvim" })
+	  use({ "williamboman/mason-lspconfig.nvim" })
   end,
   config = {
 	max_jobs = 16,

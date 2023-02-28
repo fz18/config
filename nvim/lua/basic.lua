@@ -54,6 +54,11 @@ vim.o.splitright = true
 -- 不需要显示模式
 vim.o.showmode = false
 
+-- 补全增强
+vim.o.wildmenu = true
+-- Dont' pass messages to |ins-completin menu|
+vim.o.shortmess = vim.o.shortmess .. 'c'
+
 -- 永远显示 tabline 配合插件
 vim.o.showtabline = 2
 
