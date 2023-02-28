@@ -1,4 +1,21 @@
 local UserConfig = {
+	 ---@class Commonkeys
+  keys = {
+    leader_key = " ",
+    -- quick save / quite
+    n_save = "<leader>w", -- :w
+    n_force_quit = "<leader>q", -- :qa!
+    -- quick move
+    n_v_5j = "<C-j>",
+    n_v_5k = "<C-k>",
+    n_v_10k = "<C-u>",
+    n_v_10j = "<C-d>",
+    fold = {
+      open = "zo",
+      close = "zc",
+    },
+    terminal_to_normal = "<Esc>",
+  },
 	------------------------------------
 	-- shared LSP keys
 	------------------------------------
@@ -43,6 +60,14 @@ local UserConfig = {
       snip_next_choice = "<C-j>",
       snip_prev_choice = "<C-k>",
     },
+  },
+
+   ---@class LuaConfig
+  lua = {
+    enable = true,
+    lsp = "lua_ls",
+    formatter = "stylua",
+    format_on_save = true,
   },
 }
 

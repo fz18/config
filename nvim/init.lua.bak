@@ -1,0 +1,28 @@
+-- 基础设置
+require('basic')
+require("utils.global")
+
+-- 按键
+require('keybindings')
+
+-- 插件
+require('plugins')
+
+-- 主题
+require('colorscheme')
+
+-- 插件配置
+require('plugin-config.nvim-tree')
+require('plugin-config.lualine')
+require('plugin-config.tmux-navigation')
+require('plugin-config.telescope')
+require('plugin-config.bufferline')
+require('plugin-config.nvim-treesitter')
+require('plugin-config.nvim-transparent')
+require('plugin-config.indent-blankline')
+
+-- 内置LSP
+require("lsp.setup")
+require("lsp.null-ls")
+--require("lsp.cmp")
+require("complete.init")

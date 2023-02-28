@@ -1,7 +1,7 @@
 local M = {}
 
 M.keyAttach = function(bufnr)
-	local lsp = require("config").lsp
+	local lsp = require("insis").config.lsp
 	local opt = { noremap = true, silent = true, buffer = bufnr }
 
 	-- TODO: move to config.diagnostic

@@ -1,19 +1,10 @@
-local status, mason = pcall(require, "mason")
-if not status then
-	vim.notify("没有找到 mason")
-	return
-end
+local mason = pRequire("mason")
+local mason_config = pRequire("mason-lspconfig")
+local lspconfig = pRequire("lspconfig")
+local mason_tool = pRequire("mason-tool-installer")
 
-local status, mason_config = pcall(require, "mason-lspconfig")
-if not status then
-	vim.notify("没有找到 mason-lspconfig")
-	return
-end
-
-local status, lspconfig = pcall(require, "lspconfig")
-if not status then
-	vim.notify("没有找到 lspconfig")
-	return
+if not mason or not mason_config or not lspconfig or not mason_tool then
+  return
 end
 
 -- :h mason-default-settings
@@ -30,19 +21,20 @@ mason.setup({
 
 -- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
 -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
+local lspList, servers, toolList = require("insis.utils.config-helper").getMasonConfig()
+
 mason_config.setup({
-	ensure_installed = {
-		"lua_ls",
-	},
+  ensure_installed = require("insis.env").getLSPEnsureList(),
+})
+
+mason_tool.setup({
+  ensure_installed = require("insis.env").getToolEnsureList(),
 })
 
 -- 安装列表
 --{ key: 服务器名， value: 配置文件 }
 -- key 必须为下列网址列出的 server name，不可以随便写
 -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
-local servers = {
-	lua_ls = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
-}
 
 for name, config in pairs(servers) do
 	if config ~= nil and type(config) == "table" then
@@ -53,3 +45,4 @@ for name, config in pairs(servers) do
 		lspconfig[name].setup({})
 	end
 end
+require("insis.lsp.ui")
