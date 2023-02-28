@@ -18,3 +18,9 @@ require('plugin-config.telescope')
 require('plugin-config.bufferline')
 require('plugin-config.nvim-treesitter')
 require('plugin-config.nvim-transparent')
+
+-- 内置LSP
+require("utils.global")
+require("lsp.setup")
+--require("lsp.cmp")
+require("complete.init")
