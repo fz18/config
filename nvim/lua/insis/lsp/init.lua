@@ -21,7 +21,7 @@ mason.setup({
 
 -- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
 -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-local lspList, servers, toolList = require("insis.utils.config-helper").getMasonConfig()
+local _, servers, _ = require("insis.utils.config-helper").getMasonConfig()
 
 mason_config.setup({
   ensure_installed = require("insis.env").getLSPEnsureList(),

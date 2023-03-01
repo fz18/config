@@ -43,7 +43,7 @@ local UserConfig = {
 		list = "gl",
 	},
 
-	 ---@class CMPConfig
+	---@class CMPConfig
   cmp = {
     enable = true,
     keys = {

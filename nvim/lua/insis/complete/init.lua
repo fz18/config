@@ -1,7 +1,10 @@
 local cmp = pRequire("cmp")
 local luasnip = pRequire("luasnip")
-local cfg = require("insis").config.cmp
+local cfg = require("insis.config").cmp
 
+if not cmp or not luasnip or not cfg or not cfg.enable then
+	return
+end
 local has_words_before = function()
 	unpack = unpack or table.unpack
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -38,7 +41,6 @@ local mapping = {
 			end
 		end,
 	}),
-
 	-- [cfg.keys.complete] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 	[cfg.keys.abort] = cmp.mapping({
 		i = cmp.mapping.abort(),
@@ -72,7 +74,6 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = mapping,
-	formatting = formatting,
 	sources = cmp.config.sources({
 		{
 			name = "nvim_lsp",

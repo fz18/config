@@ -24,6 +24,7 @@ function M.setup(user_config)
   require("insis.colorscheme")
   require("insis.complete")
   require("insis.plugins")
+  require("insis.format")
 end
 
 return M
