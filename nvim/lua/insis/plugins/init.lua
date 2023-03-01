@@ -76,12 +76,14 @@ return {
 	{ "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
 
 	-- Comment
-	{ "JoosepAlviste/nvim-ts-context-commentstring" },
-	--  "numToStr/Comment.nvim",
-	--  config = function()
-	--    require("insis.plugins.comment")
-	--  end,
-	--},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		"numToStr/Comment.nvim",
+		config = function()
+			require("insis.plugins.comment")
+			--require("Comment").setup({})
+		end,
+	},
 	-- indent-blankline
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -91,12 +93,12 @@ return {
 	},
 
 	-- toggleterm
-	--{
-	--  "akinsho/toggleterm.nvim",
-	--  config = function()
-	--    require("insis.plugins.toggleterm")
-	--  end,
-	--},
+	{
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("insis.plugins.toggleterm")
+		end,
+	},
 
 	-- nvim-surround
 	{

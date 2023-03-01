@@ -4,7 +4,7 @@ local lspconfig = pRequire("lspconfig")
 local mason_tool = pRequire("mason-tool-installer")
 
 if not mason or not mason_config or not lspconfig or not mason_tool then
-  return
+	return
 end
 
 -- :h mason-default-settings
@@ -24,11 +24,11 @@ mason.setup({
 local _, servers, _ = require("insis.utils.config-helper").getMasonConfig()
 
 mason_config.setup({
-  ensure_installed = require("insis.env").getLSPEnsureList(),
+	ensure_installed = require("insis.env").getLSPEnsureList(),
 })
 
 mason_tool.setup({
-  ensure_installed = require("insis.env").getToolEnsureList(),
+	ensure_installed = require("insis.env").getToolEnsureList(),
 })
 
 -- 安装列表

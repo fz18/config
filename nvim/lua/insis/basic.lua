@@ -20,7 +20,7 @@ vim.bo.shiftwidth = 2
 vim.wo.signcolumn = "yes"
 
 -- 右侧参考线
-vim.wo.colorcolumn = "80"
+vim.wo.colorcolumn = "120"
 
 -- 对齐
 vim.o.autoindent = true
@@ -45,7 +45,7 @@ vim.bo.autoread = true
 vim.o.updatetime = 300
 
 -- 键盘连击时间间隔
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 500
 
 -- split window 方向
 vim.o.splitblow = true
@@ -57,7 +57,7 @@ vim.o.showmode = false
 -- 补全增强
 vim.o.wildmenu = true
 -- Dont' pass messages to |ins-completin menu|
-vim.o.shortmess = vim.o.shortmess .. 'c'
+vim.o.shortmess = vim.o.shortmess .. "c"
 
 -- 永远显示 tabline 配合插件
 vim.o.showtabline = 2

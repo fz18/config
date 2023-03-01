@@ -1,7 +1,7 @@
 local M = {}
 
 M.keyAttach = function(bufnr)
-	local lsp = require("insis").config.lsp
+	local lsp = require("insis.config").lsp
 	local opt = { noremap = true, silent = true, buffer = bufnr }
 
 	-- TODO: move to config.diagnostic
@@ -28,16 +28,6 @@ M.keyAttach = function(bufnr)
 	keymap("n", lsp.format, "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", opt)
 end
 
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(client)
-			-- apply whatever logic you want (in this example, we'll only use null-ls)
-			return client.name == "null-ls"
-		end,
-		bufnr = bufnr,
-	})
-end
-
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
@@ -48,14 +38,20 @@ M.format = function(client, bufnr)
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
-				vim.lsp.buf.format({ bufnr = bufnr })
+				vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 10000 })
 			end,
 		})
 	end
 end
 
+-- 禁用格式化功能，交给专门插件插件处理
+M.disableFormat = function(client)
+	client.server_capabilities.documentFormattingProvider = false
+	client.server_capabilities.documentRangeFormattingProvider = false
+end
+
 -- M.capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- M.capabilities = require("cmp_nvim_lsp").default_capabilities()
+M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 M.flags = {
 	debounce_text_changes = 150,

@@ -130,7 +130,7 @@ export https_proxy=""
 
 
 # alias
-alias vim=nvim
+alias v=nvim
 
 # fzf function
 
