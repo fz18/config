@@ -7,7 +7,6 @@ if preHook ~= nil then
 end
 
 if comment and cfg and cfg.enable then
-	print(123)
 	comment.setup({
 		mappings = {
 			-- disable extra keys

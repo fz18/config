@@ -39,9 +39,7 @@ return {
 	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",
-		config = function()
-			require("insis.plugins.lualine")
-		end,
+		config = require("insis.plugins.lualine"),
 	},
 
 	-- telescope
@@ -79,10 +77,7 @@ return {
 	{
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"numToStr/Comment.nvim",
-		config = function()
-			require("insis.plugins.comment")
-			--require("Comment").setup({})
-		end,
+		config = require("insis.plugins.comment"),
 	},
 	-- indent-blankline
 	{

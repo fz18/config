@@ -26,7 +26,6 @@ function M.setup(user_config)
 	require("insis.plugins")
 	require("insis.format")
 	require("insis.autocmds")
-	require("insis.plugins.comment")
 end
 
 return M

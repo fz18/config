@@ -185,4 +185,4 @@ export AE_GITLAB_ACCESS_TOKEN="gYwhX4VbQqxHpaY4zeXF"
 export LDAP_USERNAME="fengzhao"
 export LDAP_PASSWORD="fz1806785"
 
-
+alias v = nvim
