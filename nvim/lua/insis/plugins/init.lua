@@ -7,6 +7,10 @@ return {
 	{ "moll/vim-bbye" },
 	{ "nvim-lua/plenary.nvim" },
 	-- ("lewis6991/impatient.nvim")
+
+	-- JSON
+	{ "b0o/schemastore.nvim" },
+
 	-- transparent
 	{
 		"xiyaowong/nvim-transparent",
@@ -18,7 +22,7 @@ return {
 	{
 		"aserowy/tmux.nvim",
 		config = function()
-			return require("tmux").setup()
+			require("tmux").setup()
 		end,
 	},
 
@@ -39,7 +43,9 @@ return {
 	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",
-		config = require("insis.plugins.lualine"),
+		config = function()
+			require("insis.plugins.lualine")
+		end,
 	},
 
 	-- telescope
@@ -119,11 +125,6 @@ return {
 			require("insis.plugins.todo-comments")
 		end,
 	},
-	------------------ Git ------------------------------------------------------
-	{
-		"lewis6991/gitsigns.nvim",
-		config = require("gitsigns").setup(),
-	},
 
 	------------------ LSP ------------------------------------------------------
 
@@ -176,7 +177,7 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			require("insis.plugins.gitsigns")
+			require("gitsigns").setup()
 		end,
 	},
 }

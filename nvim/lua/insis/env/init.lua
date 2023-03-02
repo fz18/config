@@ -9,12 +9,19 @@
 -- getNeotestAdapters
 
 local enabledEnv = {}
+--- @param userConfig UserConfig
 local init = function(userConfig)
 	if userConfig.lua.enable then
 		table.insert(enabledEnv, require("insis.env.lua")(userConfig.lua))
 	end
 	if userConfig.golang.enable then
 		table.insert(enabledEnv, require("insis.env.golang")(userConfig.golang))
+	end
+	if userConfig.docker.enable then
+		table.insert(enabledEnv, require("insis.env.docker")())
+	end
+	if userConfig.json.enable then
+		table.insert(enabledEnv, require("insis.env.json")(userConfig.json))
 	end
 end
 

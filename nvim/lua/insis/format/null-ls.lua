@@ -6,6 +6,11 @@ end
 
 null_ls.setup({
 	debug = false,
-	sources = require("insis.utils.config-helper").getNulllsSources(),
+	-- sources = {
+	-- 	null_ls.builtins.formatting.stylua,
+	-- 	null_ls.builtins.formatting.gofmt,
+	-- 	null_ls.builtins.formatting.fixjson,
+	-- },
+	sources = require("insis.env").getNulllsSources(),
 	on_attach = function() end,
 })

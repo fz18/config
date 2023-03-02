@@ -17,11 +17,15 @@ telescope.setup({
 			-- 查找文件换皮肤，支持的参数有： dropdown, cursor, ivy
 			-- theme = "ivy",
 		},
+		live_grep = {},
 	},
 	extensions = {
 		-- 扩展插件配置
 	},
 })
+
+keymap("n", "fc", ":Telescope current_buffer_fuzzy_find<CR>")
+keymap("n", "fw", ":Telescope grep_string<CR>")
 
 -- telescope extensions
 pcall(telescope.load_extension, "env")

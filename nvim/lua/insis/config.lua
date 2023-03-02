@@ -1,3 +1,4 @@
+---@class UserConfig
 local UserConfig = {
 	max_highlight_line_count = 10000,
 	---@class Commonkeys
@@ -111,6 +112,24 @@ local UserConfig = {
 		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
 		current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+	},
+
+	---@class JsonConfig
+	json = {
+		enable = true,
+		lsp = "jsonls",
+		-- npm install -g fixjson
+		---@type "fixjson" | "prettier"
+		formatter = "fixjson",
+		format_on_save = true,
+	},
+	---@class DockerConfig
+	docker = {
+		enable = true,
+		lsp = "dockerls",
+		-- npm install -g fixjson
+		-- formatter = "fixjson",
+		format_on_save = false,
 	},
 }
 

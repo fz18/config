@@ -24,6 +24,8 @@ M.getMasonConfig = function()
 	local configMap = {
 		lua_ls = require("insis.lsp.config.lua"), -- lua/lsp/config/lua.lua
 		gopls = require("insis.lsp.config.gopls"), -- lua/lsp/config/lua.lua
+		dockerls = require("insis.lsp.config.docker"),
+		jsonls = require("insis.lsp.config.json"),
 	}
 
 	-- enabled lsp server map
@@ -56,6 +58,18 @@ M.getMasonConfig = function()
 			ensureTool("golangci-lint")
 		end
 	end
+
+	if cfg.json and cfg.json.enable then
+		servers[cfg.json.lsp] = configMap[cfg.json.lsp]
+	end
+	if cfg.json.formatter == "fixjson" then
+		ensureTool("fixjson")
+	end
+
+	if cfg.docker and cfg.docker.enable then
+		servers[cfg.docker.lsp] = configMap[cfg.docker.lsp]
+	end
+
 	-- mason lsp ensure list
 	local lspList = {}
 	for key, _ in pairs(servers) do
