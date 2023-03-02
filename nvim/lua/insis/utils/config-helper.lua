@@ -1,5 +1,21 @@
 local M = {}
 
+M.getNulllsSources = function()
+	local null_ls = pRequire("null-ls")
+	if not null_ls then
+		return nil
+	end
+
+	local formatting = null_ls.builtins.formatting
+	local code_actions = null_ls.builtins.code_actions
+
+	local sources = {}
+	table.insert(sources, formatting.stylua)
+	table.insert(sources, formatting.gofmt)
+	table.insert(sources, code_actions.gitsigns)
+	return sources
+end
+
 M.getMasonConfig = function()
 	local cfg = require("insis.config")
 	-- all supported lsp server for now

@@ -47,6 +47,7 @@ return {
 	{ "LinArcX/telescope-env.nvim" },
 	{ "nvim-telescope/telescope-ui-select.nvim" },
 	{ "nvim-telescope/telescope-live-grep-args.nvim" },
+	{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
 	{
 		"nvim-telescope/telescope.nvim",
 		-- opt = true,
@@ -117,6 +118,11 @@ return {
 		config = function()
 			require("insis.plugins.todo-comments")
 		end,
+	},
+	------------------ Git ------------------------------------------------------
+	{
+		"lewis6991/gitsigns.nvim",
+		config = require("gitsigns").setup(),
 	},
 
 	------------------ LSP ------------------------------------------------------

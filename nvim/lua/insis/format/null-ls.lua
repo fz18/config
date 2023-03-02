@@ -6,6 +6,6 @@ end
 
 null_ls.setup({
 	debug = false,
-	sources = require("insis.env").getNulllsSources(),
+	sources = require("insis.utils.config-helper").getNulllsSources(),
 	on_attach = function() end,
 })
