@@ -4,13 +4,13 @@ if not null_ls then
 	return
 end
 
+local sources = require("insis.env").getNulllsSources()
+
+-- custom source
+table.insert(sources, null_ls.builtins.code_actions.gitsigns)
+
 null_ls.setup({
 	debug = false,
-	-- sources = {
-	-- 	null_ls.builtins.formatting.stylua,
-	-- 	null_ls.builtins.formatting.gofmt,
-	-- 	null_ls.builtins.formatting.fixjson,
-	-- },
-	sources = require("insis.env").getNulllsSources(),
+	sources = sources,
 	on_attach = function() end,
 })

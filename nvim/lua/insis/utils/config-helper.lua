@@ -26,6 +26,7 @@ M.getMasonConfig = function()
 		gopls = require("insis.lsp.config.gopls"), -- lua/lsp/config/lua.lua
 		dockerls = require("insis.lsp.config.docker"),
 		jsonls = require("insis.lsp.config.json"),
+		clangd = require("insis.lsp.config.clangd"),
 	}
 
 	-- enabled lsp server map
@@ -68,6 +69,10 @@ M.getMasonConfig = function()
 
 	if cfg.docker and cfg.docker.enable then
 		servers[cfg.docker.lsp] = configMap[cfg.docker.lsp]
+	end
+
+	if cfg.clang and cfg.clang.enable then
+		servers[cfg.clang.lsp] = configMap[cfg.clang.lsp]
 	end
 
 	-- mason lsp ensure list

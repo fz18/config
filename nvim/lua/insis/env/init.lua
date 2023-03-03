@@ -23,6 +23,9 @@ local init = function(userConfig)
 	if userConfig.json.enable then
 		table.insert(enabledEnv, require("insis.env.json")(userConfig.json))
 	end
+	if userConfig.clang.enable then
+		table.insert(enabledEnv, require("insis.env.clangd")(userConfig.clang))
+	end
 end
 
 -- loop through enabledEnv list and call envFunc on each Env file

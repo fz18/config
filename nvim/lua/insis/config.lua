@@ -128,8 +128,16 @@ local UserConfig = {
 		enable = true,
 		lsp = "dockerls",
 		-- npm install -g fixjson
-		-- formatter = "fixjson",
+		formatter = "fixjson",
 		format_on_save = false,
+	},
+
+	---@class ClangConfig
+	clang = {
+		enable = true,
+		lsp = "clangd",
+		formatter = "clang-format",
+		format_on_save = true,
 	},
 }
 
