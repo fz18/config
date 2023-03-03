@@ -27,6 +27,8 @@ M.getMasonConfig = function()
 		dockerls = require("insis.lsp.config.docker"),
 		jsonls = require("insis.lsp.config.json"),
 		clangd = require("insis.lsp.config.clangd"),
+		pyright = require("insis.lsp.config.pyright"),
+		bashls = require("insis.lsp.config.bash"),
 	}
 
 	-- enabled lsp server map
@@ -74,6 +76,10 @@ M.getMasonConfig = function()
 	if cfg.clang and cfg.clang.enable then
 		servers[cfg.clang.lsp] = configMap[cfg.clang.lsp]
 	end
+	servers["pyright"] = configMap["pyright"]
+	ensureTool("black")
+	servers["bashls"] = configMap["bashls"]
+	ensureTool("shfmt")
 
 	-- mason lsp ensure list
 	local lspList = {}

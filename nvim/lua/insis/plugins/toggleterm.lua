@@ -119,4 +119,7 @@ if toggleterm and cfg and cfg.enable then
 	vim.keymap.set({ "n", "t" }, cfg.toggle_bottom_window, function()
 		M.toggleC(cfg.toggle_bottom_window_command)
 	end)
+	vim.keymap.set({ "n", "t" }, cfg.toggle_lazigit_window, function()
+		M.toggleG()
+	end)
 end

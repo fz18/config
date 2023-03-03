@@ -87,6 +87,7 @@ local UserConfig = {
 		toggle_side_window_command = nil,
 		toggle_bottom_window = "<leader>tc",
 		toggle_bottom_window_command = nil,
+		toggle_lazigit_window = "<leader>g",
 	},
 	---@class CommentConfig
 	comment = {
