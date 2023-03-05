@@ -19,7 +19,7 @@ function M.setup(user_config)
 	require("insis.format")
 	require("insis.autocmds")
 	require("insis.plugins.gitsigns")
-	require("insis.highlight")
+	require("insis.lsp.mason")
 end
 
 return M

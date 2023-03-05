@@ -1,46 +1,40 @@
 local M = {}
 
-M.keyAttach = function(bufnr)
-	local lsp = require("insis.config").lsp
+M.ONAttach = function(client, bufnr)
 	local opt = { noremap = true, silent = true, buffer = bufnr }
 
 	-- TODO: move to config.diagnostic
 	-- diagnostic
-	keymap("n", lsp.open_flow, "<CMD>lua vim.diagnostic.open_float()<CR>")
-	keymap("n", lsp.goto_next, "<CMD>lua vim.diagnostic.goto_next()<CR>")
-	keymap("n", lsp.goto_prev, "<CMD>lua vim.diagnostic.goto_prev()<CR>")
-	keymap("n", lsp.list, "<CMD>lua Telescope loclist<CR>")
-
-	-- lsp
-	keymap("n", lsp.definition, require("telescope.builtin").lsp_definitions, opt)
-	keymap("n", lsp.declaration, vim.lsp.buf.declaration, opt)
-	keymap("n", lsp.hover, vim.lsp.buf.hover, opt)
-	keymap("n", lsp.implementation, require("telescope.builtin").lsp_implementations, opt)
+	keymap("n", "gl", "<CMD>lua Telescope loclist<CR>")
+	keymap("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opt) -- show definition, references
+	keymap("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opt) -- see definition and make edits in window
+	--
+	-- -- lsp
+	keymap("n", "gd", require("telescope.builtin").lsp_definitions, opt)
+	keymap("n", "gh", vim.lsp.buf.hover, opt)
+	keymap("n", "gi", require("telescope.builtin").lsp_implementations, opt)
 	keymap(
 		"n",
-		lsp.references,
+		"gr",
 		"<CMD>lua require'telescope.builtin'.lsp_references(require('telescope.themes').get_ivy())<CR>",
 		opt
 	)
 
-	keymap("n", lsp.rename, "<CMD>lua vim.lsp.buf.rename()<CR>", opt)
-	keymap("n", lsp.code_action, "<CMD>lua vim.lsp.buf.code_action()<CR>", opt)
-	keymap("n", lsp.format, "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", opt)
-end
+	keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opt) -- see available code actions
+	keymap("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opt) -- smart rename
+	keymap("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opt) -- show  diagnostics for line
+	keymap("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opt) -- show diagnostics for cursor
+	keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opt) -- jump to previous diagnostic in buffer
+	keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opt) -- jump to next diagnostic in buffer
+	keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opt) -- show documentation for what is under cursor
+	keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opt) -- see outline on right hand side
+	keymap("n", "<leader>f", "<CMD>lua vim.lsp.buf.format({ async = true })<CR>", opt)
 
--- if you want to set up formatting on save, you can use this as a callback
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-M.format = function(client, bufnr)
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = augroup,
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 10000 })
-			end,
-		})
+	-- typescript specific keymaps (e.g. rename file and update imports)
+	if client.name == "tsserver" then
+		keymap("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
+		keymap("n", "<leader>oi", ":TypescriptOrganizeImports<CR>") -- organize imports (not in youtube nvim video)
+		keymap("n", "<leader>ru", ":TypescriptRemoveUnused<CR>") -- remove unused variables (not in youtube nvim video)
 	end
 end
 

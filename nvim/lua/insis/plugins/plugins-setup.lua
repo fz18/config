@@ -11,6 +11,15 @@ return {
 	{ "szw/vim-maximizer" }, -- maximizes and restores current window
 	{ "b0o/schemastore.nvim" },
 
+	{
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
 	--  nvim-tmux
 	{
 		"aserowy/tmux.nvim",
@@ -78,14 +87,6 @@ return {
 		end,
 	},
 
-	-- nvim-surround
-	{
-		"kylechui/nvim-surround",
-		config = function()
-			require("insis.plugins.nvim-surround")
-		end,
-	},
-
 	-- nvim-autopairs
 	{
 		"windwp/nvim-autopairs",
@@ -108,13 +109,17 @@ return {
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
+	--
 	-- Lspconfig
 	{ "neovim/nvim-lspconfig" },
 	-- Completion engine
 	{ "hrsh7th/nvim-cmp" },
+	--
 	-- Snippet engine
 	{ "L3MON4D3/LuaSnip" },
 	{ "saadparwaiz1/cmp_luasnip" },
+	{ "rafamadriz/friendly-snippets" }, -- useful snippets
+
 	-- Completion sources
 	{ "hrsh7th/cmp-vsnip" },
 	{ "hrsh7th/cmp-nvim-lsp" }, -- { name = nvim_lsp }
@@ -122,8 +127,7 @@ return {
 	{ "hrsh7th/cmp-path" }, -- { name = 'path' }
 	{ "hrsh7th/cmp-cmdline" }, -- { name = 'cmdline' }
 	{ "hrsh7th/cmp-nvim-lsp-signature-help" }, -- { name = 'nvim_lsp_signature_help' }
-	-- common snippets
-	{ "rafamadriz/friendly-snippets" },
+	--
 	-- UI improvement
 	{ "onsails/lspkind-nvim" },
 	{
@@ -137,6 +141,11 @@ return {
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	},
+	------------------ Code formatter -------------------------------------------
+
+	-- { "mhartington/formatter.nvim" },
+	{ "jose-elias-alvarez/null-ls.nvim" },
+	{ "jayp0521/mason-null-ls.nvim" }, -- bridges gap b/w mason & null-ls
 	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -153,11 +162,6 @@ return {
 	{ "nvim-treesitter/nvim-treesitter-refactor", after = { "nvim-treesitter" } },
 	{ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
 	{ "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
-
-	------------------ Code formatter -------------------------------------------
-
-	-- { "mhartington/formatter.nvim" },
-	{ "jose-elias-alvarez/null-ls.nvim" },
 
 	------------------ Language enhancement -------------------------------------
 

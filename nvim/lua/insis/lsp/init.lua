@@ -1,35 +1,25 @@
-local mason = pRequire("mason")
-local mason_config = pRequire("mason-lspconfig")
 local lspconfig = pRequire("lspconfig")
-local mason_tool = pRequire("mason-tool-installer")
+--
+-- import typescript plugin safely
+local typescript_setup, typescript = pcall(require, "typescript")
+if not typescript_setup then
+	return
+end
+local common = require("insis.lsp.common-config")
 
-if not mason or not mason_config or not lspconfig or not mason_tool then
+if not lspconfig then
 	return
 end
 
--- :h mason-default-settings
--- ~/.local/share/nvim/mason
-mason.setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-
--- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
--- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-local _, servers, _ = require("insis.utils.config-helper").getMasonConfig()
-
-mason_config.setup({
-	ensure_installed = require("insis.env").getLSPEnsureList(),
-})
-
-mason_tool.setup({
-	ensure_installed = require("insis.env").getToolEnsureList(),
-})
+local servers = {
+	lua_ls = require("insis.lsp.config.lua"), -- lua/lsp/config/lua.lua
+	gopls = require("insis.lsp.config.gopls"), -- lua/lsp/config/lua.lua
+	dockerls = require("insis.lsp.config.docker"),
+	jsonls = require("insis.lsp.config.json"),
+	clangd = require("insis.lsp.config.clangd"),
+	pyright = require("insis.lsp.config.pyright"),
+	bashls = require("insis.lsp.config.bash"),
+}
 
 -- 安装列表
 --{ key: 服务器名， value: 配置文件 }
@@ -45,4 +35,32 @@ for name, config in pairs(servers) do
 		lspconfig[name].setup({})
 	end
 end
+
+typescript.setup({
+	server = {
+		capabilities = common.capabilities,
+		on_attach = function(client, bufnr)
+			common.disableFormat(client)
+			common.ONAttach(client, bufnr)
+		end,
+	},
+})
+
+lspconfig["html"].setup({
+	capabilities = common.capabilities,
+	on_attach = common.ONAttach,
+})
+
+lspconfig["cssls"].setup({
+	capabilities = common.capabilities,
+	on_attach = common.ONAttach,
+})
+
+lspconfig["emmet_ls"].setup({
+	capabilities = common.capabilities,
+	on_attach = common.ONAttach,
+	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+})
+
 require("insis.lsp.ui")
+require("insis.lsp.saga")

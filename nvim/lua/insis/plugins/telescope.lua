@@ -22,12 +22,14 @@ telescope.setup({
 				["<C-j>"] = actions.move_selection_next, -- move to next result
 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
 			},
+			n = {
+				["v"] = "select_vertical",
+				["s"] = "file_vsplit",
+				["q"] = "close",
+			},
 		},
 	},
 })
-
-keymap("n", "fc", ":Telescope current_buffer_fuzzy_find<CR>")
-keymap("n", "fw", ":Telescope grep_string<CR>")
 
 -- telescope extensions
 pcall(telescope.load_extension, "env")

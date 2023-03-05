@@ -1,10 +1,26 @@
-local cmp = pRequire("cmp")
-local luasnip = pRequire("luasnip")
-local cfg = require("insis.config").cmp
-
-if not cmp or not luasnip or not cfg or not cfg.enable then
+local cmp_status, cmp = pcall(require, "cmp")
+if not cmp_status then
 	return
 end
+
+-- import luasnip plugin safely
+local luasnip_status, luasnip = pcall(require, "luasnip")
+if not luasnip_status then
+	return
+end
+
+-- import lspkind plugin safely
+local lspkind_status, lspkind = pcall(require, "lspkind")
+if not lspkind_status then
+	return
+end
+local cfg = require("insis.config").cmp
+
+-- load vs-code like snippets from plugins (e.g. friendly-snippets)
+require("luasnip/loaders/from_vscode").lazy_load()
+
+vim.opt.completeopt = "menu,menuone,noselect"
+
 local has_words_before = function()
 	unpack = unpack or table.unpack
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -96,6 +112,13 @@ cmp.setup({
 			group_index = 3,
 		},
 	}),
+	-- configure lspkind for vs-code like icons
+	formatting = {
+		format = lspkind.cmp_format({
+			maxwidth = 50,
+			ellipsis_char = "...",
+		}),
+	},
 })
 
 -- Use buffer source for `/`.
