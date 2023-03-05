@@ -8,16 +8,9 @@ return {
 	{ "nvim-lua/plenary.nvim" },
 	-- ("lewis6991/impatient.nvim")
 
-	-- JSON
+	{ "szw/vim-maximizer" }, -- maximizes and restores current window
 	{ "b0o/schemastore.nvim" },
 
-	-- transparent
-	{
-		"xiyaowong/nvim-transparent",
-		config = function()
-			require("insis.plugins.nvim-transparent")
-		end,
-	},
 	--  nvim-tmux
 	{
 		"aserowy/tmux.nvim",
@@ -62,23 +55,6 @@ return {
 			require("insis.plugins.telescope")
 		end,
 	},
-
-	-- treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		run = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
-		config = function()
-			require("insis.plugins.treesitter")
-		end,
-	},
-	{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
-	{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
-	{ "nvim-treesitter/nvim-treesitter-refactor", after = { "nvim-treesitter" } },
-	{ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
-	{ "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
 
 	-- Comment
 	{
@@ -150,6 +126,33 @@ return {
 	{ "rafamadriz/friendly-snippets" },
 	-- UI improvement
 	{ "onsails/lspkind-nvim" },
+	{
+		"jose-elias-alvarez/typescript.nvim",
+	},
+	{
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		requires = {
+			{ "nvim-tree/nvim-web-devicons" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	},
+	-- treesitter
+	{
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
+			ts_update()
+		end,
+		config = function()
+			require("insis.plugins.treesitter")
+		end,
+	},
+	{ "p00f/nvim-ts-rainbow", after = "nvim-treesitter" },
+	{ "windwp/nvim-ts-autotag", after = "nvim-treesitter" },
+	{ "nvim-treesitter/nvim-treesitter-refactor", after = { "nvim-treesitter" } },
+	{ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter" },
+	{ "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
 
 	------------------ Code formatter -------------------------------------------
 
@@ -171,13 +174,6 @@ return {
 			require("monokai").setup()
 		end,
 	},
-
-	--------------------- git ---------------------------------------------------
-
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
-	},
+	-------------------- git ------------------------------
+	{ "lewis6991/gitsigns.nvim" }, -- show line modifications on left hand side
 }

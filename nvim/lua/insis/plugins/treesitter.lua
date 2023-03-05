@@ -1,5 +1,5 @@
 local treesitter = pRequire("nvim-treesitter.configs")
-local cfg = require("insis.config")
+local cfg = require("insis").config
 
 local treesitterQuery = pRequire("nvim-treesitter.query")
 if not treesitterQuery then
@@ -13,6 +13,7 @@ if treesitter then
 		-- :TSInstallInfo
 		-- ensure_installed = "maintained",
 		ensure_installed = require("insis.env").getTSEnsureList(),
+
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false,
@@ -20,6 +21,7 @@ if treesitter then
 				return vim.api.nvim_buf_line_count(bufnr) > cfg.max_highlight_line_count
 			end,
 		},
+
 		incremental_selection = {
 			enable = false,
 			keymaps = {

@@ -12,12 +12,38 @@ map("v", ">", ">gv", opt)
 map("n", "q", ":q<CR>", opt)
 map("n", "qq", ":q!<CR>", opt)
 map("n", "Q", ":qa!<CR>", opt)
-map("n", "<Leader>w", ":w<CR>", opt)
+map("n", "<Leader>w", ":wa<CR>", opt)
 map("n", "<Leader>e", ":NvimTreeToggle<CR>", opt)
 
+map("i", "jk", "<ESC>", opt)
+map("n", "<Leader>nh", ":nohl<CR>", opt)
+-- map("n", "x", "_x", opt)
+
+-- window
+map("n", "<Leader>wv", "<C-w>v", opt)
+map("n", "<Leader>ws", "<C-w>s", opt)
+map("n", "<Leader>we", "<C-w>=", opt)
+map("n", "<Leader>wx", ":close<CR>", opt)
+
+map("n", "<Leader>to", ":tabnew<CR>", opt)
+map("n", "<Leader>tx", ":tabclose<CR>", opt)
+map("n", "<Leader>tn", ":tabn<CR>", opt)
+map("n", "<Leader>tp", ":tabp<CR>", opt)
+
+-------------------
+-- Plugin Keybinds
+-- ----------------
+
+-- vim-maximizer
+map("n", "<Leader>wm", ":MaximizerToggle<CR>", opt)
+
 -- Telescope
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
-map("n", "<C-f>", ":Telescope live_grep<CR>", opt)
+map("n", "<C-p>", "<CMD>Telescope find_files<CR>", opt)
+map("n", "<C-f>", "<CMD>Telescope current_buffer_fuzzy_find<CR>", opt)
+map("n", "<Leader>fs", "<CMD>Telescope live_grep<CR>", opt)
+map("n", "<Leader>fc", "<CMD>Telescope grep_string<CR>", opt)
+map("n", "<Leader>fb", "<CMD>Telescope buffers<CR>", opt)
+map("n", "<Leader>fh", "<CMD>Telescope help_tags<CR>", opt)
 
 -- bufferline
 map("n", "<TAB>", ":BufferLineCyclePrev<CR>", opt)
@@ -55,15 +81,20 @@ pluginKeys.mapLSP = function(mapbuf)
 	-- code action
 	mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
 	-- go xx
+
+	mapbuf("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opt)
 	mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
 	mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-	mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
+	mapbuf("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opt)
 	mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
 	mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
 	-- diagnostic
-	mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-	mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-	mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
+	-- keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
+	mapbuf("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opt) -- show diagnostics for cursor
+	mapbuf("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opt) -- jump to previous diagnostic in buffer
+	mapbuf("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opt) -- jump to next diagnostic in buffer
+	mapbuf("n", "K", "<cmd>Lspsaga hover_doc<CR>", opt) -- show documentation for what is under cursor
+	mapbuf("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", opt) -- see outline on right hand side
 end
 
 -- nvim-cmp 自动补全

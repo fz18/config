@@ -12,12 +12,15 @@ M.getNulllsSources = function()
 	local sources = {}
 	table.insert(sources, formatting.stylua)
 	table.insert(sources, formatting.gofmt)
+	table.insert(sources, formatting.shfmt)
+	table.insert(sources, formatting.fixjson)
+	table.insert(sources, formatting.clang_format)
+	table.insert(sources, formatting.black.with({ extra_args = { "--fast" } }))
 	table.insert(sources, code_actions.gitsigns)
 	return sources
 end
 
 M.getMasonConfig = function()
-	local cfg = require("insis.config")
 	-- all supported lsp server for now
 	-- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
 	-- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
@@ -44,42 +47,18 @@ M.getMasonConfig = function()
 		end
 	end
 
-	if cfg.lua and cfg.lua.enable then
-		if configMap[cfg.lua.lsp] then
-			-- lua_ls
-			servers[cfg.lua.lsp] = configMap[cfg.lua.lsp]
-		end
-		if cfg.lua.formatter == "stylua" then
-			ensureTool("stylua")
-		end
-	end
-	if cfg.golang and cfg.golang.enable then
-		if configMap[cfg.golang.lsp] then
-			servers[cfg.golang.lsp] = configMap[cfg.golang.lsp]
-		end
-		if cfg.golang.linter == "golangci-lint" then
-			ensureTool("golangci-lint")
-		end
-	end
-
-	if cfg.json and cfg.json.enable then
-		servers[cfg.json.lsp] = configMap[cfg.json.lsp]
-	end
-	if cfg.json.formatter == "fixjson" then
-		ensureTool("fixjson")
-	end
-
-	if cfg.docker and cfg.docker.enable then
-		servers[cfg.docker.lsp] = configMap[cfg.docker.lsp]
-	end
-
-	if cfg.clang and cfg.clang.enable then
-		servers[cfg.clang.lsp] = configMap[cfg.clang.lsp]
-	end
+	servers["lua_ls"] = configMap["lua_ls"]
+	servers["jsonls"] = configMap["jsonls"]
+	servers["gopls"] = configMap["gopls"]
+	servers["clangd"] = configMap["clangd"]
+	servers["dockerls"] = configMap["dockerls"]
 	servers["pyright"] = configMap["pyright"]
-	ensureTool("black")
 	servers["bashls"] = configMap["bashls"]
 	ensureTool("shfmt")
+	ensureTool("black")
+	ensureTool("fixjson")
+	ensureTool("golangci-lint")
+	ensureTool("stylua")
 
 	-- mason lsp ensure list
 	local lspList = {}
