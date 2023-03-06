@@ -45,6 +45,7 @@ map("n", "<Leader>fs", "<CMD>Telescope live_grep<CR>", opt)
 map("n", "<Leader>fc", "<CMD>Telescope grep_string<CR>", opt)
 map("n", "<Leader>fb", "<CMD>Telescope buffers<CR>", opt)
 map("n", "<Leader>fh", "<CMD>Telescope help_tags<CR>", opt)
+map("n", "<Leader>fi", [[<cmd>lua require'telescope'.extensions.goimpl.goimpl{}<CR>]], opt)
 
 -- bufferline
 map("n", "<TAB>", ":BufferLineCyclePrev<CR>", opt)

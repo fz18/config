@@ -3,7 +3,7 @@ local opts = {
 	capabilities = common.capabilities,
 	flags = common.flags,
 	on_attach = function(client, bufnr)
-		common.keyAttach(bufnr)
+		common.ONAttach(client, bufnr)
 		common.disableFormat(client)
 	end,
 	-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim

@@ -34,3 +34,4 @@ telescope.setup({
 -- telescope extensions
 pcall(telescope.load_extension, "env")
 pcall(telescope.load_extension, "fzf")
+pcall(telescope.load_extension, "goimpl")

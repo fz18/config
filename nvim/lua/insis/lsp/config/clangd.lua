@@ -19,7 +19,7 @@ local opts = {
 	},
 	on_attach = function(client, bufnr)
 		common.disableFormat(client)
-		common.keyAttach(bufnr)
+		common.ONAttach(client, bufnr)
 	end,
 }
 

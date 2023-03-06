@@ -17,7 +17,7 @@ end
 local cfg = require("insis.config").cmp
 
 -- load vs-code like snippets from plugins (e.g. friendly-snippets)
-require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load()
 
 vim.opt.completeopt = "menu,menuone,noselect"
 
@@ -90,28 +90,7 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 	mapping = mapping,
-	sources = cmp.config.sources({
-		{
-			name = "nvim_lsp",
-			group_index = 1,
-		},
-		{
-			name = "nvim_lsp_signature_help",
-			group_index = 1,
-		},
-		{
-			name = "luasnip",
-			group_index = 2,
-		},
-		{
-			name = "buffer",
-			group_index = 3,
-		},
-		{
-			name = "path",
-			group_index = 3,
-		},
-	}),
+	sources = { { name = "nvim_lsp" }, { name = "luasnip" }, { name = "buffer" }, { name = "path" } },
 	-- configure lspkind for vs-code like icons
 	formatting = {
 		format = lspkind.cmp_format({

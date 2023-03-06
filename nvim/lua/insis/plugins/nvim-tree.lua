@@ -4,6 +4,11 @@ if not status then
 	return
 end
 
+local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
+if not config_status_ok then
+	return
+end
+
 -- recommended settings from nvim-tree documentation
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -116,6 +121,8 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 -- 	-- vim.keymap.set("n", "so", api.node.run.system, opts("Run System"))
 -- end
 
+local tree_cb = nvim_tree_config.nvim_tree_callback
+
 nvim_tree.setup({
 	update_cwd = true,
 	update_focused_file = {
@@ -134,6 +141,13 @@ nvim_tree.setup({
 		number = false,
 		relativenumber = false,
 		signcolumn = "no",
+		mappings = {
+			list = {
+				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+				{ key = "h", cb = tree_cb("close_node") },
+				{ key = "v", cb = tree_cb("vsplit") },
+			},
+		},
 	},
 
 	actions = {
@@ -143,5 +157,4 @@ nvim_tree.setup({
 			},
 		},
 	},
-	on_attach = on_attach,
 })

@@ -5,6 +5,22 @@ local treesitterQuery = pRequire("nvim-treesitter.query")
 if not treesitterQuery then
 	return
 end
+
+local ensures = {
+	"bash",
+	"c",
+	"javascript",
+	"json",
+	"lua",
+	"python",
+	"typescript",
+	"tsx",
+	"css",
+	"rust",
+	"yaml",
+	"markdown",
+	"markdown_inline",
+}
 if treesitter then
 	pRequire("nvim-treesitter.install").prefer_git = true
 
@@ -12,7 +28,7 @@ if treesitter then
 		sync_install = false,
 		-- :TSInstallInfo
 		-- ensure_installed = "maintained",
-		ensure_installed = require("insis.env").getTSEnsureList(),
+		ensure_installed = ensures,
 
 		highlight = {
 			enable = true,

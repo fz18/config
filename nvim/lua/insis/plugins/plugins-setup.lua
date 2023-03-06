@@ -141,6 +141,17 @@ return {
 			{ "nvim-treesitter/nvim-treesitter" },
 		},
 	},
+
+	-- Go
+	{
+		"edolphin-ydf/goimpl.nvim",
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-telescope/telescope.nvim" },
+			{ "nvim-treesitter/nvim-treesitter" },
+		},
+	},
 	------------------ Code formatter -------------------------------------------
 
 	-- { "mhartington/formatter.nvim" },

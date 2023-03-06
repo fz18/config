@@ -3,6 +3,7 @@ local cfg = require("insis.config").toggleterm
 
 if toggleterm and cfg and cfg.enable then
 	toggleterm.setup({
+		open_mapping = [[<c-\>]],
 		size = function(term)
 			if term.direction == "horizontal" then
 				return 15
@@ -11,6 +12,15 @@ if toggleterm and cfg and cfg.enable then
 			end
 		end,
 		start_in_insert = true,
+		direction = "float",
+		float_opts = {
+			border = "curved",
+			winblend = 0,
+			highlights = {
+				border = "Normal",
+				background = "Normal",
+			},
+		},
 	})
 
 	local Terminal = require("toggleterm.terminal").Terminal

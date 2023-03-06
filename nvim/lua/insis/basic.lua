@@ -64,3 +64,5 @@ vim.o.showtabline = 2
 
 -- 允许隐藏被修改的 buffer
 vim.o.hidden = true
+
+vim.o.cursorline = true
