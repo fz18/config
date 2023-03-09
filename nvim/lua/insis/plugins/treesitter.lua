@@ -49,7 +49,7 @@ if treesitter then
 		},
 		-- enable =
 		indent = {
-			enable = true,
+			enable = false,
 		},
 		-- p00f/nvim-ts-rainbow
 		rainbow = {

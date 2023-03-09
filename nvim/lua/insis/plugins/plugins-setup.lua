@@ -185,9 +185,11 @@ return {
 	-- monokai
 	{
 		"tanvirtin/monokai.nvim",
-		config = function()
-			require("monokai").setup()
-		end,
+	},
+
+	-- sonokai
+	{
+		"sainnhe/sonokai",
 	},
 	-------------------- git ------------------------------
 	{ "lewis6991/gitsigns.nvim" }, -- show line modifications on left hand side
