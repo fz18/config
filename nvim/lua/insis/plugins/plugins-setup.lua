@@ -191,6 +191,9 @@ return {
 		"tanvirtin/monokai.nvim",
 	},
 
+	{
+		"folke/tokyonight.nvim",
+	},
 	-- sonokai
 	{
 		"sainnhe/sonokai",

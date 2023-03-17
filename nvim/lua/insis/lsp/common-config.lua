@@ -11,6 +11,7 @@ M.ONAttach = function(client, bufnr)
 	--
 	-- -- lsp
 	keymap("n", "gd", require("telescope.builtin").lsp_definitions, opt)
+	keymap("n", "gs", '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', opt)
 	keymap("n", "gh", vim.lsp.buf.hover, opt)
 	keymap("n", "gi", require("telescope.builtin").lsp_implementations, opt)
 	keymap(
