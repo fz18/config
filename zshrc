@@ -107,13 +107,13 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 function tes() {
-export ETCD_URI="etcd.etcd-dev:2379"
+export ETCD_URI="etcd.etcd-test:2379"
 export ETCD_USER="root"
 export ETCD_PASSWORD="33c3iT70QTABU2JR"
 }
 
 function dev() {
-export ETCD_URI="etcd.etcd-test:2379"
+export ETCD_URI="etcd.etcd-dev:2379"
 export ETCD_USER="root"
 export ETCD_PASSWORD="33c3iT70QTABU2JR"
 }
@@ -184,5 +184,3 @@ zstyle ':completion:*' menu yes select search
 export AE_GITLAB_ACCESS_TOKEN="gYwhX4VbQqxHpaY4zeXF"
 export LDAP_USERNAME="fengzhao"
 export LDAP_PASSWORD="fz1806785"
-
-alias v = nvim

@@ -127,6 +127,7 @@ nvim_tree.setup({
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
+		update_root = false,
 	},
 	-- 隐藏 . 文件
 	filters = {

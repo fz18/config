@@ -127,6 +127,9 @@ return {
 	{ "hrsh7th/cmp-path" }, -- { name = 'path' }
 	{ "hrsh7th/cmp-cmdline" }, -- { name = 'cmdline' }
 	{ "hrsh7th/cmp-nvim-lsp-signature-help" }, -- { name = 'nvim_lsp_signature_help' }
+	{
+		"ray-x/lsp_signature.nvim",
+	},
 	--
 	-- UI improvement
 	{ "onsails/lspkind-nvim" },
@@ -175,6 +178,7 @@ return {
 	{ "RRethy/nvim-treesitter-endwise", after = "nvim-treesitter" },
 
 	------------------ Language enhancement -------------------------------------
+	{ "simrat39/symbols-outline.nvim" },
 
 	--------------------- colorschemes ------------------------------------------
 

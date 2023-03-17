@@ -24,7 +24,7 @@ map("n", "<Leader>nh", ":nohl<CR>", opt)
 map("n", "<Leader>wv", "<C-w>v", opt)
 map("n", "<Leader>ws", "<C-w>s", opt)
 map("n", "<Leader>we", "<C-w>=", opt)
-map("n", "<Leader>wx", ":close<CR>", opt)
+map("n", "<Leader>wc", ":close<CR>", opt)
 
 map("n", "<Leader>to", ":tabnew<CR>", opt)
 map("n", "<Leader>tx", ":tabclose<CR>", opt)
@@ -50,84 +50,5 @@ map("n", "<Leader>fi", [[<cmd>lua require'telescope'.extensions.goimpl.goimpl{}<
 -- bufferline
 map("n", "<TAB>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<S-TAB>", ":BufferLineCycleNext<CR>", opt)
-
-local pluginKeys = {}
-
--- Telescope 列表中 插入模式快捷键
-pluginKeys.telescopeList = {
-	i = {
-		-- 上下移动
-		["<C-j>"] = "move_selection_next",
-		["<C-k>"] = "move_selection_previous",
-		["<Down>"] = "move_selection_next",
-		["<Up>"] = "move_selection_previous",
-		-- 历史记录
-		["<C-n>"] = "cycle_history_next",
-		["<C-p>"] = "cycle_history_prev",
-		-- 关闭窗口
-		["<C-c>"] = "close",
-		-- 预览窗口上下滚动
-		["<C-u>"] = "preview_scrolling_up",
-		["<C-d>"] = "preview_scrolling_down",
-	},
-	n = {
-		["v"] = "select_vertical",
-		["s"] = "file_vsplit",
-	},
-}
-
--- nvim-cmp 自动补全
-pluginKeys.cmp = function(cmp)
-	local feedkey = function(key, mode)
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-	end
-
-	local has_words_before = function()
-		local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-	end
-
-	return {
-		-- 出现补全
-		["<TAB>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		-- 取消
-		["<S-TAB>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
-		-- 上一个
-		["<C-k>"] = cmp.mapping.select_prev_item(),
-		-- 下一个
-		["<C-j>"] = cmp.mapping.select_next_item(),
-		-- 确认
-		["<CR>"] = cmp.mapping.confirm({
-			select = true,
-			behavior = cmp.ConfirmBehavior.Replace,
-		}),
-		-- 如果窗口内容太多，可以滚动
-		["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-		["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-		-- Super Tab
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<Plug>(vsnip-expand-or-jump)", "")
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-			end
-		end, { "i", "s" }),
-
-		["<S-Tab>"] = cmp.mapping(function()
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-				feedkey("<Plug>(vsnip-jump-prev)", "")
-			end
-		end, { "i", "s" }),
-	}
-end
-
-return pluginKeys
+map("n", "<Leader>bc", ":Bdelete!<CR>", opt)
+map("n", "<Leader>bp", ":BufferLinePickClose<CR>", opt)
