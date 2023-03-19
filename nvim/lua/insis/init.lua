@@ -20,6 +20,7 @@ function M.setup(user_config)
 	require("insis.autocmds")
 	require("insis.plugins.gitsigns")
 	require("insis.lsp.mason")
+	require("insis.asyncrun")
 end
 
 return M

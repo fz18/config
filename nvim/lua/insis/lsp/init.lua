@@ -56,11 +56,11 @@ lspconfig["cssls"].setup({
 	on_attach = common.ONAttach,
 })
 
-lspconfig["emmet_ls"].setup({
-	capabilities = common.capabilities,
-	on_attach = common.ONAttach,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-})
+-- lspconfig["emmet_ls"].setup({
+-- 	capabilities = common.capabilities,
+-- 	on_attach = common.ONAttach,
+-- 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+-- })
 
 require("insis.lsp.ui")
 require("insis.lsp.saga")

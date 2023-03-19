@@ -102,6 +102,19 @@ return {
 			require("insis.plugins.todo-comments")
 		end,
 	},
+	{
+		"skywind3000/asyncrun.vim",
+		as = "asyncrun",
+		config = function()
+			require("asyncrun_toggleterm").setup({
+				mapping = "<leader>tt",
+				start_in_insert = false,
+			})
+		end,
+	},
+	{
+		"preservim/vimux",
+	},
 
 	------------------ LSP ------------------------------------------------------
 
