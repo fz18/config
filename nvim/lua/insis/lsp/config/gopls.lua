@@ -1,3 +1,4 @@
+require("go").setup()
 local common = require("insis.lsp.common-config")
 local opts = {
 	capabilities = common.capabilities,

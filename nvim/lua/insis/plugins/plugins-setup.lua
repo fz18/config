@@ -160,6 +160,7 @@ return {
 
 	-- Go
 	{
+		"ray-x/go.nvim",
 		"edolphin-ydf/goimpl.nvim",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },

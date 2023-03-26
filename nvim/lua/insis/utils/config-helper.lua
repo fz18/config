@@ -18,8 +18,8 @@ M.getNulllsSources = function()
 	table.insert(sources, formatting.clang_format)
 	table.insert(sources, formatting.black.with({ extra_args = { "--fast" } }))
 	table.insert(sources, code_actions.gitsigns)
-	table.insert(sources, code_actions.eslint_d)
-	table.insert(sources, diagnostics.eslint_d)
+	table.insert(sources, null_ls.builtins.code_actions.eslint_d)
+	table.insert(sources, null_ls.builtins.diagnostics.eslint_d)
 	table.insert(sources, require("typescript.extensions.null-ls.code-actions"))
 	table.insert(
 		sources,
