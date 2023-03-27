@@ -27,6 +27,8 @@ lualine.setup({
 			"encoding",
 			"filetype",
 		},
+		lualine_x = { "filename" },
+		lualine_z = { "location" },
 	},
 	disabled_filetypes = {
 		statusline = { "NvimTree" },

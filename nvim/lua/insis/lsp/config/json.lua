@@ -6,7 +6,7 @@ local opts = {
 		-- use fixjson to format
 		-- https://github.com/rhysd/fixjson
 		common.disableFormat(client)
-		common.ONAttach(bufnr)
+		common.ONAttach(client, bufnr)
 	end,
 	settings = {
 		json = {
