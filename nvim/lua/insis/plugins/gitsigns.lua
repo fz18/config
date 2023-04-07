@@ -13,7 +13,6 @@ gitsigns.setup({
 		changedelete = { hl = "GitSignsDelete", text = "d~", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
 		untracked = { hl = "GitSignsAdd", text = "┆", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 	},
-	current_line_blame = true,
 })
 
 -- 显示 Git hunk 中添加和删除的行数

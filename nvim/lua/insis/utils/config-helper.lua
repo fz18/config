@@ -8,7 +8,6 @@ M.getNulllsSources = function()
 
 	local formatting = null_ls.builtins.formatting
 	local code_actions = null_ls.builtins.code_actions
-	local diagnostics = null_ls.builtins.diagnostics
 
 	local sources = {}
 	table.insert(sources, formatting.stylua)
@@ -18,8 +17,13 @@ M.getNulllsSources = function()
 	table.insert(sources, formatting.clang_format)
 	table.insert(sources, formatting.black.with({ extra_args = { "--fast" } }))
 	table.insert(sources, code_actions.gitsigns)
-	table.insert(sources, null_ls.builtins.code_actions.eslint_d)
-	table.insert(sources, null_ls.builtins.diagnostics.eslint_d)
+	-- table.insert(sources, null_ls.builtins.code_actions.eslint_d)
+	-- table.insert(
+	-- 	sources,
+	-- 	null_ls.builtins.diagnostics.eslint_d.with({
+	-- 		diagnostics_format = "[eslint] #{m}\n(#{c})",
+	-- 	})
+	-- )
 	table.insert(sources, require("typescript.extensions.null-ls.code-actions"))
 	table.insert(
 		sources,
@@ -39,6 +43,7 @@ M.getNulllsSources = function()
 				-- "yaml",
 				-- "markdown",
 			},
+			prefer_local = "node_modules",
 		})
 	)
 	return sources

@@ -6,6 +6,8 @@ local opts = {
 	on_attach = function(client, bufnr)
 		common.ONAttach(client, bufnr)
 		common.disableFormat(client)
+		keymap("n", "fs", "<CMD>GoFillStruct<CR>")
+		keymap("n", "ft", "<CMD>GoAddTag<CR>")
 	end,
 	-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim
 	-- https://github.com/golang/tools/blob/master/gopls/doc/settings.md
