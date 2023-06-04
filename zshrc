@@ -181,7 +181,4 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*' menu yes select search
 
-export AE_GITLAB_ACCESS_TOKEN="gYwhX4VbQqxHpaY4zeXF"
-export LDAP_USERNAME="fengzhao"
-export LDAP_PASSWORD="fz1806785"
 export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
