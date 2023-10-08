@@ -1,9 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/go/bin:$PATH
+# export PATH=$HOME/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/fengzhao/.oh-my-zsh"
-export KUBECONFIG=~/.kube/tp_config
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -106,17 +105,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-function tes() {
-export ETCD_URI="etcd.etcd-test:2379"
-export ETCD_USER="root"
-export ETCD_PASSWORD="33c3iT70QTABU2JR"
-}
-
-function dev() {
-export ETCD_URI="etcd.etcd-dev:2379"
-export ETCD_USER="root"
-export ETCD_PASSWORD="33c3iT70QTABU2JR"
-}
 
 proxy(){
 export http_proxy="http://127.0.0.1:7890"
@@ -172,16 +160,13 @@ export FZF_DEFAULT_COMMAND='fd --type file'
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_ALT_C_COMMAND="fd -t d . "
 source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.zsh
+#source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.zsh
 export FZF_COMPLETION_TRIGGER='``'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-zstyle ':completion:*' menu yes select
-zstyle ':completion:*' menu yes select search
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# zstyle ':completion:*' menu yes select
+# zstyle ':completion:*' menu yes select search
 
-export AE_GITLAB_ACCESS_TOKEN="gYwhX4VbQqxHpaY4zeXF"
-export LDAP_USERNAME="fengzhao"
-export LDAP_PASSWORD="fz1806785"
 export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
