@@ -134,11 +134,6 @@ _G.packer_plugins = {
     path = "/Users/fengzhao/.local/share/nvim/site/pack/packer/start/go.nvim",
     url = "https://github.com/ray-x/go.nvim"
   },
-  ["gruvbox.nvim"] = {
-    loaded = true,
-    path = "/Users/fengzhao/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
-    url = "https://github.com/ellisonleao/gruvbox.nvim"
-  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/Users/fengzhao/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -240,11 +235,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/fengzhao/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
-  },
-  ["typescript.nvim"] = {
-    loaded = true,
-    path = "/Users/fengzhao/.local/share/nvim/site/pack/packer/start/typescript.nvim",
-    url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
   ["vim-maximizer"] = {
     loaded = true,

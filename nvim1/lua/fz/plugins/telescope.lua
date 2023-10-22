@@ -8,8 +8,16 @@ if not actions_setup then
 	return
 end
 
+local builtin_setup, builtin = pcall(require, "telescope.builtin")
+if not builtin_setup then
+	return
+end
+
 telescope.setup({
 	defaults = {
+		layout_config = {
+			horizontal = { preview_width = 0.6 },
+		},
 		mappings = {
 			i = {
 				["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -45,4 +53,9 @@ function find_directory_and_focus()
 	})
 end
 
+vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<Leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<Leader>fh", builtin.help_tags, {})
+vim.keymap.set("n", "<Leader>fs", builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set("n", "fd", find_directory_and_focus)
