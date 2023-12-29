@@ -16,7 +16,7 @@ local function open_nvim_tree()
 	require("nvim-tree.api").tree.open()
 end
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 
 local api = require("nvim-tree.api")
 api.events.subscribe(api.events.Event.FileCreated, function(file)
@@ -72,9 +72,11 @@ nvimtree.setup({
 		relativenumber = false,
 		signcolumn = "yes",
 	},
+	update_cwd = false,
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
-		update_root = false,
 	},
 })
+
+vim.g.nvim_tree_respect_buf_cwd = 1

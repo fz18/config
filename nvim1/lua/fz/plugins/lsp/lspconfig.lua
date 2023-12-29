@@ -69,6 +69,16 @@ lspconfig["gopls"].setup({
 	on_attach = on_attach,
 })
 
+lspconfig["lua_ls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig["yamlls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 -- configure typescript server with plugin
 -- typescript.setup({
 -- 	server = {

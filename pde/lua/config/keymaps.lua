@@ -1,6 +1,5 @@
-vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
+local keymap = vim.keymap.set
 local map = vim.api.nvim_set_keymap
 -- 复用 opt 参数
 local opt = { noremap = true, silent = true }
@@ -31,25 +30,19 @@ map("n", "<Leader>tp", ":tabp<CR>", opt)
 
 -- copy
 map("v", "<Leader>y", '"+y', opt)
-
 -------------------
 -- Plugin Keybinds
 -- ----------------
 
+map("n", "<leader>gf", [[<cmd>lua require'plugins.telescope.pickers'.git_diff_picker{}<CR>]], opt)
 -- vim-maximizer
 map("n", "<Leader>wm", ":MaximizerToggle<CR>", opt)
 
--- Telescope
--- map("n", "<C-p>", "<CMD>Telescope find_files<CR>", opt)
--- map("n", "<C-f>", "<CMD>Telescope current_buffer_fuzzy_find<CR>", opt)
--- map("n", "<C-F>", "<CMD>Telescope live_grep<CR>", opt)
--- map("n", "<Leader>fc", "<CMD>Telescope grep_string<CR>", opt)
--- map("n", "<Leader>fb", "<CMD>Telescope buffers<CR>", opt)
--- map("n", "<Leader>fh", "<CMD>Telescope help_tags<CR>", opt)
---map("n", "<Leader>fi", [[<cmd>lua require'telescope'.extensions.goimpl.goimpl{}<CR>]], opt)
-
--- bufferline
--- map("n", "<TAB>", ":BufferLineCyclePrev<CR>", opt)
--- map("n", "<S-TAB>", ":BufferLineCycleNext<CR>", opt)
--- map("n", "<Leader>bc", ":Bdelete!<CR>", opt)
--- map("n", "<Leader>bp", ":BufferLinePickClose<CR>", opt)
+-- Auto indent
+keymap("n", "i", function()
+	if #vim.fn.getline(".") == 0 then
+		return [["_cc]]
+	else
+		return "i"
+	end
+end, { expr = true })

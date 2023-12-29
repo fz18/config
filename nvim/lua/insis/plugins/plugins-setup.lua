@@ -72,12 +72,12 @@ return {
 		config = require("insis.plugins.comment"),
 	},
 	-- indent-blankline
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("insis.plugins.indent-blankline")
-		end,
-	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	config = function()
+	-- 		require("insis.plugins.indent-blankline")
+	-- 	end,
+	-- },
 
 	-- toggleterm
 	{

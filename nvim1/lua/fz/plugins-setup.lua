@@ -109,22 +109,40 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- editor
+	use({
+		"RRethy/vim-illuminate",
+	})
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
-	-- My plugins here
-	-- use 'foo1/bar1.nvim'
-	-- use 'foo2/bar2.nvim'
+	use("sindrets/diffview.nvim")
+	use({
+		"NeogitOrg/neogit",
+		config = function()
+			require("neogit").setup()
+		end,
+	})
+	use({
+		"dinhhuy258/git.nvim",
+		config = function()
+			require("git").setup()
+		end,
+	})
 
 	-- colorscheme
 	use("folke/tokyonight.nvim")
 
+	--- go
 	use("ray-x/go.nvim")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
+	--
+	-- startup
+	use({ "mhinz/vim-startify" })
 	if packer_bootstrap then
 		require("packer").sync()
 	end

@@ -1,5 +1,38 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/go/bin:$PATH
+# export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
+export PATH=$HOME/go/bin:$PATH
+
+
+
+# switch go version with brew link
+export GOROOT=/opt/homebrew/opt/go@1.19/libexec
+export GOBIN=$HOME/go/bin
+
+
+export VISUAL=nvim
+export EDITOR=nvim
+
+
+# start project
+dev() {
+export ETCD_URI=etcd.etcd-dev:2379
+export ETCD_USER=root
+export ETCD_PASSWORD=33c3iT70QTABU2JR
+export ETCD_NS_PROJ=controller
+export KUBECONFIG=~/.kube/tp_config
+}
+
+pve() {
+export ETCD_URI=etcd.shenshusuo:2379
+export ETCD_USER=root
+export ETCD_PASSWORD=VsjCVp0XjUSN55Gl
+export ETCD_NS_PROJ=controller
+export KUBECONFIG=~/.kube/kubeconfig.yaml
+}
+
+export LDAP_USERNAME="fengzhao"
+export LDAP_PASSWORD=DtCW0QU79Ra15FYA
+export AE_GITLAB_ACCESS_TOKEN=Cy1XMcbfYSsf1rQTkWHZ
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/fengzhao/.oh-my-zsh"
@@ -116,9 +149,17 @@ export http_proxy=""
 export https_proxy=""
 }
 
+vimq() {
+    nvim -q <($(fc -nl -1))
+}
+
 
 # alias
-alias v=nvim
+#alias v=nvim
+alias gst=git status
+alias gm=git commit
+alias v="NVIM_APPNAME=modern-neovim nvim"
+
 
 # fzf function
 
@@ -168,5 +209,4 @@ export FZF_COMPLETION_TRIGGER='``'
 # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 # zstyle ':completion:*' menu yes select
 # zstyle ':completion:*' menu yes select search
-
-export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
+eval "$(zoxide init zsh)"
